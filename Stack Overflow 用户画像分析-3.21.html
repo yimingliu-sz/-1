@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>Stack Overflow 用户画像分析-3.21</title><link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}#write, body { height: auto; }
+#write, #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write ol, #write p, #write ul { position: relative; }
+#write, #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write, pre { white-space: pre-wrap; }
+.CodeMirror, .md-fences, table { text-align: left; }
+.md-reset, a:active, a:hover { outline: 0px; }
+.md-reset, .md-toc-item a { text-decoration: none; }
+.MathJax_SVG, .md-reset { float: none; direction: ltr; }
+:root { --bg-color:#ffffff; --text-color:#333333; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+a.url { word-break: break-all; }
+.in-text-selection, ::selection { background: rgb(181, 214, 252); text-shadow: none; }
+#write { margin: 0px auto; word-break: normal; word-wrap: break-word; padding-bottom: 70px; overflow-x: visible; }
+.first-line-indent #write p .md-line { text-indent: 0px; }
+.first-line-indent #write li, .first-line-indent #write p, .first-line-indent #write p .md-line:first-child { text-indent: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write > blockquote:first-child, #write > div:first-child, #write > ol:first-child, #write > p:first-child, #write > pre:first-child, #write > table:first-child, #write > ul:first-child { margin-top: 30px; }
+#write li > table:first-child { margin-top: -20px; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+p { -webkit-margin-before: 1rem; -webkit-margin-after: 1rem; -webkit-margin-start: 0px; -webkit-margin-end: 0px; }
+.mathjax-block { margin-top: 0px; margin-bottom: 0px; -webkit-margin-before: 0px; -webkit-margin-after: 0px; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+#write > figure:first-child { margin-top: 16px; }
+figure { overflow-x: auto; margin: -8px 0px 0px -8px; max-width: calc(100% + 16px); padding: 8px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; }
+.CodeMirror-line, .md-fences { break-inside: avoid; }
+table.md-table td { min-width: 80px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; margin-right: 4px; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+.md-fences { font-size: 0.9rem; display: block; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+.md-fences .CodeMirror.CodeMirror-wrap { top: -1.6em; margin-bottom: -1.6em; }
+.md-fences.mock-cm { white-space: pre-wrap; }
+.show-fences-line-number .md-fences { padding-left: 0px; }
+.show-fences-line-number .md-fences.mock-cm { padding-left: 40px; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; vertical-align: top; background: 0px 0px; text-shadow: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; }
+.md-toc-inner, a img, img a { cursor: pointer; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid-page; orphans: 2; }
+  p { orphans: 4; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0px; }
+}
+.footnote-line { white-space: pre-wrap; margin-top: 0.714em; font-size: 0.7em; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > img:only-child { display: block; margin: auto; }
+.md-line > .md-image:only-child, p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
+.mathjax-block:not(:empty)::after, .md-toc-content::after, .md-toc::after { display: none; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.mathjax-block { white-space: pre; overflow: hidden; width: 100%; }
+p + .mathjax-block { margin-top: -1.143rem; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.MathJax_SVG, .mathjax-block .MathJax_SVG_Display { text-indent: 0px; max-width: none; max-height: none; min-height: 0px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-inner:hover { }
+.md-toc-inner { display: inline-block; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, tt { font-family: var(--monospace); }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.mathjax-block .MathJax_SVG_Display { text-align: center; margin: 1em 0px; position: relative; min-width: 100%; width: auto; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: monospace; }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; min-width: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg, [lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+
+
+:root { --side-bar-bg-color: #fafafa; --control-text-color: #777; }
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: normal; src: local("Open Sans Regular"), url("./github/400.woff") format("woff"); }
+@font-face { font-family: "Open Sans"; font-style: italic; font-weight: normal; src: local("Open Sans Italic"), url("./github/400i.woff") format("woff"); }
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: bold; src: local("Open Sans Bold"), url("./github/700.woff") format("woff"); }
+@font-face { font-family: "Open Sans"; font-style: italic; font-weight: bold; src: local("Open Sans Bold Italic"), url("./github/700i.woff") format("woff"); }
+html { font-size: 16px; }
+body { font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(51, 51, 51); line-height: 1.6; }
+#write { max-width: 860px; margin: 0px auto; padding: 20px 30px 100px; }
+#write > ul:first-child, #write > ol:first-child { margin-top: 30px; }
+body > :first-child { margin-top: 0px !important; }
+body > :last-child { margin-bottom: 0px !important; }
+a { color: rgb(65, 131, 196); }
+h1, h2, h3, h4, h5, h6 { position: relative; margin-top: 1rem; margin-bottom: 1rem; font-weight: bold; line-height: 1.4; cursor: text; }
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor { text-decoration: none; }
+h1 tt, h1 code { font-size: inherit; }
+h2 tt, h2 code { font-size: inherit; }
+h3 tt, h3 code { font-size: inherit; }
+h4 tt, h4 code { font-size: inherit; }
+h5 tt, h5 code { font-size: inherit; }
+h6 tt, h6 code { font-size: inherit; }
+h1 { padding-bottom: 0.3em; font-size: 2.25em; line-height: 1.2; border-bottom: 1px solid rgb(238, 238, 238); }
+h2 { padding-bottom: 0.3em; font-size: 1.75em; line-height: 1.225; border-bottom: 1px solid rgb(238, 238, 238); }
+h3 { font-size: 1.5em; line-height: 1.43; }
+h4 { font-size: 1.25em; }
+h5 { font-size: 1em; }
+h6 { font-size: 1em; color: rgb(119, 119, 119); }
+p, blockquote, ul, ol, dl, table { margin: 0.8em 0px; }
+li > ol, li > ul { margin: 0px; }
+hr { height: 4px; padding: 0px; margin: 16px 0px; background-color: rgb(231, 231, 231); border-width: 0px 0px 1px; border-style: none none solid; border-top-color: initial; border-right-color: initial; border-left-color: initial; border-image: initial; overflow: hidden; box-sizing: content-box; border-bottom-color: rgb(221, 221, 221); }
+body > h2:first-child { margin-top: 0px; padding-top: 0px; }
+body > h1:first-child { margin-top: 0px; padding-top: 0px; }
+body > h1:first-child + h2 { margin-top: 0px; padding-top: 0px; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child { margin-top: 0px; padding-top: 0px; }
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 { margin-top: 0px; padding-top: 0px; }
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p { margin-top: 0px; }
+li p.first { display: inline-block; }
+ul, ol { padding-left: 30px; }
+ul:first-child, ol:first-child { margin-top: 0px; }
+ul:last-child, ol:last-child { margin-bottom: 0px; }
+blockquote { border-left: 4px solid rgb(221, 221, 221); padding: 0px 15px; color: rgb(119, 119, 119); }
+blockquote blockquote { padding-right: 0px; }
+table { padding: 0px; word-break: initial; }
+table tr { border-top: 1px solid rgb(204, 204, 204); margin: 0px; padding: 0px; }
+table tr:nth-child(2n) { background-color: rgb(248, 248, 248); }
+table tr th { font-weight: bold; border-width: 1px 1px 0px; border-top-style: solid; border-right-style: solid; border-left-style: solid; border-top-color: rgb(204, 204, 204); border-right-color: rgb(204, 204, 204); border-left-color: rgb(204, 204, 204); border-image: initial; border-bottom-style: initial; border-bottom-color: initial; text-align: left; margin: 0px; padding: 6px 13px; }
+table tr td { border: 1px solid rgb(204, 204, 204); text-align: left; margin: 0px; padding: 6px 13px; }
+table tr th:first-child, table tr td:first-child { margin-top: 0px; }
+table tr th:last-child, table tr td:last-child { margin-bottom: 0px; }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); }
+.md-fences, code, tt { border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); border-radius: 3px; font-family: Consolas, "Liberation Mono", Courier, monospace; padding: 2px 4px 0px; font-size: 0.9em; }
+.md-fences { margin-bottom: 15px; margin-top: 15px; padding: 8px 1em 6px; }
+.md-task-list-item > input { margin-left: -1.3em; }
+@media screen and (min-width: 914px) {
+}
+@media print {
+  html { font-size: 13px; }
+  table, pre { break-inside: avoid; }
+  pre { word-wrap: break-word; }
+}
+.md-fences { background-color: rgb(248, 248, 248); }
+#write pre.md-meta-block { padding: 1rem; font-size: 85%; line-height: 1.45; background-color: rgb(247, 247, 247); border: 0px; border-radius: 3px; color: rgb(119, 119, 119); margin-top: 0px !important; }
+.mathjax-block > .code-tooltip { bottom: 0.375rem; }
+#write > h3.md-focus::before { left: -1.5625rem; top: 0.375rem; }
+#write > h4.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+#write > h5.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+#write > h6.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+.md-image > .md-meta { border-radius: 3px; font-family: Consolas, "Liberation Mono", Courier, monospace; padding: 2px 0px 0px 4px; font-size: 0.9em; color: inherit; }
+.md-tag { color: inherit; }
+.md-toc { margin-top: 20px; padding-bottom: 20px; }
+.sidebar-tabs { border-bottom: none; }
+#typora-quick-open { border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); }
+#typora-quick-open-item { background-color: rgb(250, 250, 250); border-color: rgb(254, 254, 254) rgb(229, 229, 229) rgb(229, 229, 229) rgb(238, 238, 238); border-style: solid; border-width: 1px; }
+#md-notification::before { top: 10px; }
+.on-focus-mode blockquote { border-left-color: rgba(85, 85, 85, 0.12); }
+header, .context-menu, .megamenu-content, footer { font-family: "Segoe UI", Arial, sans-serif; }
+.file-node-content:hover .file-node-icon, .file-node-content:hover .file-node-open-state { visibility: visible; }
+.mac-seamless-mode #typora-sidebar { background-color: var(--side-bar-bg-color); }
+.md-lang { color: rgb(180, 101, 77); }
+.html-for-mac .context-menu { --item-hover-bg-color: #E6F0FE; }
+
+
+
+
+
+ .typora-export p, .typora-export .footnote-line {white-space: normal;} 
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><p> </p><h1><a name='header-n3' class='md-header-anchor '></a>Stack Overflow 用户画像分析</h1><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553132482697.png' alt='1553132482697' referrerPolicy='no-referrer' /></p><h2><a name='header-n6' class='md-header-anchor '></a>项目介绍</h2><p>本次项目的灵感来自于互联网，Stack Overflow 每年都会对其用户进行线上调研，从2011至2018，已持续了8 年。</p><p>Stack Overflow2018年度开发者调查是针对183个国家和地区，获得了超过100,000个用户的回复，是对软件开发人员进行的最全面的调研，调研了开发人员从职业满意度、求职到教育、编码偏好各个方面的经验。</p><h2><a name='header-n11' class='md-header-anchor '></a>项目目的</h2><p>本次项目主要利用Stack Overflow2018年近10万——98855个用户调研数据，以实现Stack Overflow的用户画像分</p><p>析。Stack Overflow（简称Stack）想利用用户画像来吸引广告商的注意，以及投放广告以获得推广效果，目前需解决以下问题：</p><ul><li><strong>什么类型的广告适合投放在Stack？</strong></li><li><strong>Stack在什么类型的平台发布广告可以使自己的推广效果达到最大呢？</strong></li></ul><hr /><h2><a name='header-n24' class='md-header-anchor '></a>项目分析过程</h2><p><em>**本项目主要用Python进行数据清洗，整合以及数据分析探索，使用Tableau进行数据可视化，使用Typora撰写Markdown数据分析报告。</em></p><p>Stack此次的用户调研一共涉及128个问题，相当于128个特征，其中部分特征对项目的分析目的没有针对性，因此首先对特征进行筛选。</p><h3><a name='header-n31' class='md-header-anchor '></a>1.来自什么国家？</h3><p><em>*共98443个受访者回答</em></p><p>Stack的用户分布于全世界的183个国家。从世界范围来看，美国在Stack的用户数最多且占比超过20%，由于美国的计算机技术占领先地位，用户排名第一也是在合理的解释范围。其中印度的IT行业也是非常发达，其用户数在是 stcak排名第二，且是第三的德国人数的2倍。中国排名17，如果没有网络安全的限制，中国的排名应该更高。</p><p>可以看出，Stack 的用户主要分布在北美，印度，欧洲等IT技术较发达的国家。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131404104.png' alt='1553131404104' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><h3><a name='header-n42' class='md-header-anchor '></a>2.写代码是否是用户的兴趣？是否对开源项目做过贡献？</h3><p><em>*均有98855个回答</em></p><p>Stack的用户中大部分以写代码为兴趣，说明他们平时对IT领域的信息会比较关注。</p><p>Stack的用户中有43.6%的用户为代码开源做过贡献，这部分用户的技术能力相对较强，开源代码的门槛相对较高。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131433734.png' alt='1553131433734' referrerPolicy='no-referrer' /></p><p>​                 <img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131442111.png' alt='1553131442111' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><h3><a name='header-n55' class='md-header-anchor '></a>3.用户的性别，年龄以及编程年龄分布</h3><p><em>*共64469个回答</em></p><p>Stack的用户男性占92.2%，女性仅占6.2%，说明对代码关心的男性远多于女性。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131513113.png' alt='1553131513113' referrerPolicy='no-referrer' /></p><p><em>*共64574个回答</em></p><p>用户年龄主要集中在25-30岁，以青年为主要力量。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131524553.png' alt='1553131524553' referrerPolicy='no-referrer' /></p><p><em>*共93835个回答</em></p><p>用户编码年龄主要集中在3-5年，有一定的经验，仍需学习阶段。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131535596.png' alt='1553131535596' referrerPolicy='no-referrer' /></p><p><em>*共77903个回答</em></p><p>用户以编码为职业的时间集中在0-2年，3-5年这两个阶段，说明上Stack的用户大多都是刚入行不久，刷Stack的目的主要是提升个人技能。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131549037.png' alt='1553131549037' referrerPolicy='no-referrer' /></p><p> </p><h3><a name='header-n80' class='md-header-anchor '></a>4.用户的最高学历是怎么样的？</h3><p><em>*共94703个回答</em></p><p>Stack用户拥有本科学历的占到46.1%，其次是硕士占到22.59%，而没有接触过正式教育的用户仅占0.74%。整体上看用户的学历普遍在本科及本科以上。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131560271.png' alt='1553131560271' referrerPolicy='no-referrer' /></p><h3><a name='header-n87' class='md-header-anchor '></a>5.目前的求职状态是什么？是否是学生？</h3><p><em>*共95321个回答</em></p><p>Stack活跃的用户，74%都是在职员工，其次有9.7%的用户是自由职业者，5.6%的用户是拥有一份兼职，说明有近</p><p>90%的用户都有一定经济能力。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131576702.png' alt='1553131576702' referrerPolicy='no-referrer' /> </p><p><em>*共9401个回答</em></p><p>有74.2%的用户不是学生，结合求职状态数据可看出有全职工作的用户一般不是学生，但是全职学生或兼职学生的比例达到25.8%。虽然职业人士占Stack用户的大部分，但学生群体亦是一股不小的力量。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131586073.png' alt='1553131586073' referrerPolicy='no-referrer' /></p><p> </p><h3><a name='header-n104' class='md-header-anchor '></a>6.用户的收入分布</h3><p><em>*共46860 个完整回答</em></p><p>原始的薪资数据是以美元年薪换算（假设一年有50周，12个月），将薪资和薪资类型为NaN值或0值的数据剔除。在工资处理中发现有许多年薪的数据非常大，最大大到200w，通过箱型图看数据分布，发现异常值较多，上极限值为198139.5美元年薪，因此将异常值排除出去再来进行统计，这意味着我可能排除了类似facebook创始人马克· 扎克伯格年薪这样的数据。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131597592.png' alt='1553131597592' referrerPolicy='no-referrer' /></p><p>通过直方图可以看出，用户工资主要集中在3-5万年薪左右，这在美国的个人收入中算中等收入，且有很多年前超过十万的高收入人群，Stack用户有很大一部分工作中会用到编码，也可以推测出他们属于IT行业，而IT行业在美国算是高薪职业。其中0-9907美元年薪收入也占比较大的一部分，这可以用前面提到学生数据解释，有25.8%的用户是学生。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131608365.png' alt='1553131608365' referrerPolicy='no-referrer' /></p><p>整体的平均年薪随编码年龄而增长，与编码相关的工作平均年薪在前20年的变化是比较快的，这也是职业的发展期，而超过20年后，平均年薪趋于稳定。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131619518.png' alt='1553131619518' referrerPolicy='no-referrer' /></p><h3><a name='header-n119' class='md-header-anchor '></a>7.用户的作息时间（WakeTime）</h3><p><em>*共72146个回答</em></p><p>用户的作息大部分正常，占比最高的是7：01-8：00 AM 这一时间段，一般公司的上班时间为9：00。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131630005.png' alt='1553131630005' referrerPolicy='no-referrer' /></p><h3><a name='header-n124' class='md-header-anchor '></a>8.用户一天花多少时间在电脑上</h3><p><em>*共72133个回答</em></p><p>如果按上班8小时计，那么上班工作用到电脑的时长在5-8小时，说明不用在非工作时间使用电脑，那么数据表明：只有30.6%的用户属于这一范围。程序员加班文化结合来看，大概有65.9%的程序员需要加班。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131640361.png' alt='1553131640361' referrerPolicy='no-referrer' /></p><h3><a name='header-n131' class='md-header-anchor '></a>9.用户一天花多少时间在户外及锻炼的频率</h3><p><em>*共72024个回答</em></p><p>一天所花时间少于39分钟在户外的用户可以说是非常宅了，基本上没事不出门。</p><p>而有71.9%的用户在每天会在户外花30分钟-2小时，算上平时的通勤时间，在2小时内还是比较合理的。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131653035.png' alt='1553131653035' referrerPolicy='no-referrer' /></p><p><em>*共72108个回答</em></p><p>几乎不运动的用户占了很大一部分，在四种分类中占比也是最高。但是基本上satck用户还是挺注意健康的，62.6% 的用户每周都至少有运动一次。</p><p><img src='C:\Users\ADMINI~1\AppData\Local\Temp\1553131661296.png' alt='1553131661296' referrerPolicy='no-referrer' /></p><h3><a name='header-n146' class='md-header-anchor '></a>10.用户是否有家庭</h3><p><em>*共62596个回答</em></p><p>有家庭的用户占28.9%，而未婚/无家庭的用户占到71.1%，前面也有提到，Stack用户的年龄集中在22-34这一青年阶段，所以未婚/无家庭的占比大也有合理解释。</p><p><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZwAAAGhCAYAAABVpQJKAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDIuMi4yLCBodHRwOi8vbWF0cGxvdGxpYi5vcmcvhp/UCwAAIABJREFUeJzt3Xd4VFXiPvB3WnrvkBASekIngKIIVgRZURFX/brqrhULuhbE3n6WRbFixwK4omJvVEVABEV6OiWkUlInyUym3/v7I5AlJEDKzD0zd97P8+RBJlPeCTFvzr3nnqORZVkGERGRh2lFByAiIv/AwiEiIkWwcIiISBEsHCIiUgQLh4iIFMHCISIiRbBwyOPsdnuXHpeTk4PZs2ejqzP3P/zwQyxYsKBLjyUi92PhkMfdcccduOqqqzr9OKPRiHnz5mHr1q2nvG9paSkKCgpafWzZsgUPP/ww8vPzW27Lzs5GXl5em8cvWLAAb731VqvbbDYbLrvssnbvf9RNN92EoKAgREVFISoqCpGRkdBoNIiMjGy5LSQkBBkZGad8D3a7HVOnTsXOnTtPed/jLVmyBI888sgp7/f7779Do9G0+SXg448/RlJSUqdfl6gz9KIDkLo0NjbCZrNBr//ft9aqVatw4403wmg0trqvJEmw2+2Ij4/HmDFjUFRU1O5zTpgwAQEBAa1uy8rKwi+//NLy93/961/Iz89HTExMq/slJibiiiuuAADIsgyn04m+ffti2bJlre63fPlyZGZmtrrtjz/+wMqVK/Hee++d8P0GBATgzjvvxLx58wA0l2R0dDRyc3ORkpICAFi4cCFeeeWVEz7Hsc8VFBSEuXPnYsmSJae8/7HWrl2Ln376Cc8+++xJ7xcUFASNRtPm6xkQENDmNiJ3Y+GQWz3//PN47bXXYDAYADT/1m6xWPDyyy/j5ZdfbnVfSZJgsViwd+9eOBwOvPHGG/jHP/5xytd44403sHTp0la36fV6PPLII7j55puh1+uh1bYdvJvNZnz22Wftjrby8/Px8MMPt7rtiy++wGmnnYbCwkIUFhYCAGJjY1uNVnQ63SnzHs13PEmS0NDQ0Oq2m2++Gdu2bWtTzkFBQQgKCjrh82u1Wuj1ephMpjafczqdCAgIQEhICHQ6Xbtfm/YKZ968eTj77LMxevTok743oo5i4ZBbPffcc3juueda/n7BBRdg1KhRmDt37kkfp9FoAAAulwuSJLUU1rFcLlfL+Zzjz+vodDocOHAAISEhCAoKaimXQ4cO4cCBA9i5cyd27NjRcvjr8ssvB9D8A/79998HAIwZMwYAcMUVV+Djjz/Gp59+iri4OMycORMAUFtbi/Hjx7cqu/Z+eJ/s/R2roqICqamp7d7/+MNj999/P1588cWTvkZpaSnCw8Pb/dz8+fNx5513diifxWLBfffdh7fffht33XUXC4fchoVDHvPRRx/h559/xubNm/Huu++2+XxmZiY2btwIAIiMjERoaChWrFiBGTNmIDAwEBaLBXa7HZGRkQAAh8OBOXPmYMKECWhsbGzzfGlpaXA6ncjNzcW5556L6dOnY/369bj88ssxfvx4rFixAiNGjGj1mKCgINx3330th8SeeeYZ7N69G5988gkSExORm5vb8sP41VdfbXM+SaPRYMGCBfjyyy8BNI9aAGDcuHEtox+TyYS0tLQ2eY+OKBobGxEWFnbCr+Ppp5+OwMDAE37+qN69e6O4uLjN7U6ns01BFxQUAGj+mh47slmxYgXuvvtuSJKEH3/8EVOnTj3l6xJ1FCcNkEf88ccfuP322/HII4+gvr4eRqOx1ce8efNanbj+7bffcNlll2Hq1KmwWCxYvHgxwsLC8Nprr7U8xmw2Y/r06Rg7diweeuihVq9ns9lafnAuWrQI//jHP2AwGHDeeee1nEtpT3uHxCwWCx599FE8/vjjrX7zdzgcbX7wS5KEm2++GcXFxSguLsauXbsAAJs2bWq57WiZHa+9w2ydydlRer2+1YjR5XJh9OjRyMrKQlZWFq699loAQFFREW666SbcddddyMvLY9mQ23GEQ273559/4m9/+9spDzcd/wPXZrNh+fLlmD9/PioqKhAYGIjg4OCWz2/fvh0XXnghJk+ejMWLF7d6bHV1NcLCwrB//34sWLAAv/32G4DmQ1EOhwO1tbV48cUXER0djalTp2LKlCknzBUaGopFixZBq9Xi3nvvbTn3ZLfb25xHOXp+pCuOfn3q6+vhdDpPeD+Xy9XmkFxDQ0PLaOpoNkmS2pz70ev1bUZPOp2uzbmeb7/9FsnJydi7d2+HRlNEXcHCIbdauHAh7rzzTjz11FNYvXo15s2bhzfeeKPN/ex2O4YNGwageZRw/fXX47vvvkNKSgoeeughXHjhhZgxYwZmzpyJXr16IScnB8888wyeeeYZ3HbbbW2er7q6GnFxcZg7dy4cDgeysrLw1ltvISEhAU6nEzqdDrGxsUhISEBoaGirx7788st49dVXATSfG7r22mtxwQUXID8/H/Pnz8eNN96IwYMHw2aztSkci8WCDz/8sOU80NFDV4MHD24pCbvd3mYGHICWCQMnG4EdNXny5FZ/Hzx4MMrLy9vcLzo6utXfJ02ahJUrV57y+QEgMDCQZUMexUNq5DY1NTX47rvv8Mknn+C+++4D0DzCOP5wmtFoxOuvv97yOK1WiyuuuAKfffYZdu7cCafTiaysLEyePBn33XcfpkyZgk2bNgEApk2b1ubwkt1uR2VlJdLT0/HKK6/AZDIhPT0dI0aMwAMPPICHH34YkZGRuOGGG/Doo49iwoQJrR5/7733wul0wul04qmnnmq5PSMjA1OnTsULL7wAoLlcji+cqqoqPPnkky3vq6SkBACQm5vbctvx1/cc+/XSarVoamqCLMsn/Jg+fXqb9xwSEoInnnjipI+7/vrrT3puiEhpLBxym9jYWHzzzTe45JJLWm6bN29eywWQx37cddddrR47fPhw5OTkYNCgQVi8eDFWrFiBzMxMfPLJJ9Dr9XjppZcwbdq0ds+HZGdnIzw8HAcOHMC0adPQ2NiIiooK9O7dGwcPHkRNTQ0kSUJjYyNqampw6NChDr+nu+66q+WEv9lsRkRERKvP5+bmYujQoZ34KrV+bHp6eqvDhu356quv8OSTT7a6rb1Zb+051f3y8/PxxBNPdOi5iLqLhUMe1ZERjiRJuOmmm/D111/j1VdfxdKlS/HSSy/hmWeewbp165CcnIySkhI89thjWLBgQZvlalatWoUzzjgDY8aMQVVVFWbOnIlJkyZh0aJFSEtLQ1paGhoaGjB16lSkpqZi/PjxHc5/7rnntox66uvrW2bMAUBeXh4OHDiAs846q83jjp8V1t4P/h9++AHnnHNOh7O4w9Fcu3btwjXXXIPhw4e3O7MNaJ7Ice2117a5Voioq1g45DEul6vNbZIk4bfffsOff/7Z8pu9VqvFihUr8Omnn+K3337DsGHDMGDAAGzatAl9+/aFxWKBw+FA//79sWjRIsycORPTpk3D/v374XQ68eGHH2LGjBnQ6XS44YYbsHTpUphMJvTs2RPr1q3D5s2bsXXrVmzfvh3btm3D559/3jKtWpIkvPTSS9BoNNBoNHjsscfazQ0Au3fvblU4b7zxBi666KJWo56jJ/+PzsD79NNP8emnn7ZZNqawsBDffPMNbrrppi59bWVZxlNPPdWSu72PRYsWtZpYAAAbN26Ey+VCVlYW9Ho9srOzsWjRIhgMBhw+fBjFxcUwGo2oq6vDRx99hDVr1vCwHLkNJw2Qx1it1ja3abVazJo1CzU1NS0n6i0WCy699FKsXbsW1113Hf766y8kJibi5ZdfxsaNGyHLMrKysgAAf//73xEbG4tXXnkFcXFxyM7ORnBwMK688kpcf/31WLt2LTZs2ACgeaWA9957D2VlZWhoaIDVaoXL5UJ4eDhKS0sBNM+MO/46nKNTmwFgw4YNeP/997F7924UFhZi4sSJAICmpiasW7cOb775Zpv3d80117SU6ZYtWxAeHt7qsJXVasW1116Ls846C6eddlqXvrZNTU2YM2cOHnzwwRPe5/bbb0d1dXWr2y6++GKsXr0ac+fOxcCBA1tuP/3005Gamor09PSW28LDw/Hee+91+OJWolPRyF1dipeoixwOR5uVBH766ScMHDgQ/fr1a7ntqquuQnh4OB588EH07dv3hM/ncrmg0+lQW1uL4ODgU54TOdaWLVsQGBjYch7m4MGDaGpqanm96upq3HfffRg7diymTZuGXr16tXndziovL8esWbPw/PPPY9CgQZ1+PJGvYuEQEZEiOFYmIiJFsHCIiEgRLBwiIlIEC4eIiBTBwiEiIkWwcIiISBEsHCIiUgQLh4iIFMHCISIiRbBwiIhIESwcIiJSBAuHiIgUwcIhIiJFsHCIiEgRLBwiIlIEC4eIiBTBwiEiIkWwcIiISBEsHCIiUgQLh4iIFMHCISIiRbBwiIhIESwcIiJSBAuHiIgUwcIhIiJFsHCIiEgRLBwiIlIEC4eIiBTBwiEiIkWwcIiISBEsHCIiUgQLh4iIFMHCISIiRbBwiIhIESwcIiJSBAuHiIgUwcIhIiJFsHCIiEgRLBwiIlIEC4eIiBShFx2AyFvJLhekJhNkiwVwOSFLEiBJgCyhLCQRWi2g02ig1Wig02qg12oQFqhHkEEnOjqRV9LIsiyLDkGkBMlsgrPqEFzVlXBVH27+s6YSUmMDpCZzc7k0mSA1mSE3mSHbrCd8rulnv3DCzwXqtQgP1CM8yIDIoOY/I4L0iDjmz+gQA3pGBqNXdDAiggyeeLtEXocjHFIVV10NHKVFcJTsg6O0CM5DFUcKphKyxaxIBptTgs1pR7XZ3qH7RwTpkRwVjJRjPo7+PSEsEBqNxsOJiZTBwiGfJDWZYN9X2FwsJUVwlhbBUboPUkO96Gid1mB1ouFQI/IPNbb5XKBei9ToEGT2CEdmUgQGJ0Wgb3wo9FqefiXfw0Nq5BMcFaWw5++CLX8n7AXZcJQWNZ9PEeRkh9Q8LVCvxYD4MGT2iEBmUnMR9Y4J4UiIvB5HOOR1ZJcT9oIc2HJ3NBdMYQ6k+jrRsbyGzSkh+2ADsg82tNwWGqBDRlIERqdGYVx6LDISw1lA5HU4wiGv4Kw+DOvWTbBu+R3WHZshNylzvqWrRI5wOiI6xICxvWMwLi0Gp6fHIjY0QHQkIhYOiSE7nbDl7oB16++wbtkIR8k+0ZE6xdsL51gaAP0TwnB6WgzOSI/F8ORI6HU8B0TKY+GQYmSHHZYtG9G0fiWsf21UbNaYJ/hS4RwvNECH09NicGFGEs7sE4sAPcuHlMHCIY+SXU5Yd/yFpvWrYNn0K2SzSXQkt/DlwjlWeKAe5w6Ix+TMJIzqFQUtz/uQB7FwyO1kWYY9dwfM61bC8vsvqjzhr5bCOVZCWCAuGJSAKZlJGJgYLjoOqRALh9zGVVcD86rvYFrxDVyVB0XH8Sg1Fs6x0mNDcGFGIqZkJqFnZLDoOKQSLBzqNuuuLTAt+wqWTb8CTqfoOIpQe+EcpdUA4/vG4apRKRjTO0Z0HPJxvA6HukQym2D+5UeYln0FZ9l+0XHIQyQZWL+3Guv3VqNvXCiuHJWCKZlJXKCUuoQjHOoUR1kxGr/5L5rWrjjp4pZq5y8jnPZEBhtw6bCeuGJkMhLDg0THIR/CwqEOseXvQuOXi2D5cz3Abxm/LpyjdFoNzukfj6tGpWB4SpToOOQDeEiNTsq67Q80fPYBbLnbRUchL+OSZPxcWImfCysxpEcEbj0zHaenx4qORV6MIxxql+XP9Wj47APYd+eKjuKVOMJp38iUKNx2Vh+M5IiH2sHCoVas2/+E8aP5cOwrEB3Fq7FwTu70tBjMHN8Hg3tEiI5CXoSH1AgAYC/ajfqPXod12x+io5AK/FFciz+KazGxXxxmju+DfvFhoiORF2Dh+Dln1SHUf/w2mn5dLnR/GVKndXur8du+apw/MAG3nNkHvWNCREcigVg4fkoym9Dw+Ycw/fA5ZLtNdBxSMUkGVhVU4pfCKlw2vCduO6sPIoIMomORACwcPyNLEkw/fYGGJe/55HbM5Ltcsowvd1Tg58JK3HZWH1w6rCcXC/UznDTgR+x7C1D7xnNw7MkTHcXncdJA92UkhmP2+QMwtGek6CikEBaOH5CazKj/7zsw/bAUkFyi46gCC8c9NAAuHdYTsyb2RTgPs6keD6mpXNPva2B8dx5cNZWioxC1IQP4ZtcBrNtbjXvO6YfJmUmiI5EHcYSjUs7KQ6h7ey6sm38THUWVOMLxjNPTYjDngoFIieKWCGrEvWVVyLT8axy67QqWDfmcP4prcc3Czfg++4DoKOQBPKSmIq76OtS+9v9g/XO96ChEXdbkcOH/rSjA70U1eHjSIEQG89yOWnCEoxKWvzbg0O1XsWxINdbsrsL/LdyMzSW1oqOQm/Acjo+TbFYY338V5mVfio7iV3gORzkaAFeP7oU7zuqLAD1/R/Zl/NfzYfY9+Th81z9YNqRqMoAlW8rwz/9uwb5qk+g41A0sHB/V+P1nOHz/v+AsLxYdhUgRe6pMuP7jLfh8W5noKNRFnDTgYySrFXXzn0XT2uWioxApzuaUMO+XPdhSasRTF2UgJIA/wnwJRzg+xHmoApX338CyIb+3dk8VbvxkKyqMFtFRqBNYOD7CsnUTDv/7Ojj27xYdhcgr7K024/r/bsHW0jrRUaiDWDheTpZlNHz+IaqfvBtSI1d3JjpWvcWBO77YgaXbykVHoQ7gAVAvJlktqH3pcVg2/io6CpHXckkyXvxlN/ZUmTDn/AHQ6/h7tLfiv4yXchlrUfngrSwbog76dtcB3L50O+qa7KKj0AmwcLyQo6IUlfffwH1riDppe3k9rvv4LxQebhQdhdrBwvEytoIcVN5/A5wHeUyaqCsONdhw62fbsLWMkwm8DQvHi1j+XI+qh2dCajCKjkLk08x2F+7+cic27KsWHYWOwcLxEqblX6P6mdmQbVbRUYhUweaUMPvbbKwqOCw6Ch3BWWpeoH7JAjR88q7oGESq45RkPPZjLsw2Jy4bniw6jt/z+RHOE088gaFDh+LYRa/nzJmDMWPGCEzVcfUfv8OyIfIgSQaeW1WIjzeXio7i93y+cO655x6UlZXhhx9+AAAYjUa8/fbbePLJJ8UG64D6xW+h4bP3Rccg8guvr9uLtzcUiY7h13y+cKKionD33XfjueeeAwDMnz8fAwcOxNSpUwUnOznjojfR8PmHomMQ+ZUPNxVj3i+7wW3AxPD5wgGaRzkFBQX48ccf8frrr7ca3SxcuBAZGRmIjIzE9OnTUV39v1krZWVlmDJlCiIiIhAfH4/Zs2cr8o1oXPgGGpd+5PHXIaK2Pt9WjudXFYqO4ZdUUThHRzlXXXUV0tLSWkY333zzDW655RY8++yz2LFjB2pra3HDDTe0PG7OnDlobGxEdnY2VqxYgUWLFuHbb7/1aFbjh6+j8YuFHn0NIjq5b3YdwBvr94mO4XdUUThA8yjHbDbj3//+d8tt7777Lv7+979j+vTpSE9Px5w5c7Bs2TI0NTUBAEJDQyFJEhwOB0aNGoWDBw/i0ksv9VhG40fz0fjVYo89PxF13KI/SziRQGGqKZyoqCgAQGRkZMttpaWl+OqrrxAVFYWoqChceeWVcLlcKCtr3jHwueeew5AhQ3DuueciMTERd9xxB0wmz2xh2/DVx2j8cpFHnpuIuub1dXvxffYB0TH8hmoKpz29e/fGbbfdhh07dmDHjh3YuXMntm/fjtTUVABAfn4+nn32WZSWlmLjxo1Ys2YN5s2b5/Yc5l+Xo/6j193+vETUfc+tLMSvu6tEx/ALqi6cW2+9FV9//TXKysqg1WrxySef4Mwzz4TF0rxL4KOPPop7770Xu3fvhtPphCzLkCTJrRms2/9A7atPAZwVQ+SVXLKMR3/MxeaSWtFRVE/VKw1ceumlqKurwy233IKSkhIMHToUy5cvR0xMDADg/fffx6xZs1ouEp08eTJmz57ttte378lH9bMPAE6n256TiNzP7pIw+5tsvHXlSAzuESE6jmppZE5I9wjnwXIcvv9GSMYa0VHIA6af/YLoCOQBkcEGLLh6FNJjQ0VHUSVVH1ITxVVfh6rHZ7FsiHxMvcWBu77cwU3cPISF42ayw47qp++F80CZ6ChE1AWHGmx46PscON18PpdYOG5X+8bzsBdki45BRN2wtcyIV3/dKzqG6rBw3Kjx2yVo+vkH0TGIyA0+31aOH3MOio6hKiwcN7Hu2AzjB6+JjkFEbvSf1YXIO9QgOoZqsHDcwFl5CDVzHwYkl+goRORGR3cNrTVzEoE7sHC6SXbYUf3cA5AajKKjEJEHVDba8OD32XC6OImgu1g43VT39otw7MkTHYOIPGh7eT1eWrNHdAyfx8LpBvPaFTCv/EZ0DCJSwJc7KvATJxF0Cwuni5yVB1H31n9ExyAiBb34y24cqLeIjuGzWDhdIEsSal96ArLZM1sZEJF3MttdeHJZHiSuCNYlLJwuaPxiIWw520THICIBtpfX47/cuK1LWDidZN+Th/ol74mOQUQCvfN7EfZU8ghHZ7FwOkGyWlDz4qPcboDIzzlcMh7/KRd2J6dKdwYLpxOM770EZwWH0kQE7K024+0NRaJj+BQWTgdZtm6CeeW3omMQkRdZsqUUW8vqRMfwGSycDpCsVtS9ySnQRNSaJANPLcuHycbD7B3BwumAhiXvwXW4QnQMIvJCBxusmL+OWxl0BAvnFOzFe9H47SeiYxCRF/t21wHkc1XpU2LhnIQsSaib/yzg4irQRHRikgy8+PNuyLwg9KRYOCdhWvYVd+8kog7JPtiAH7jW2kmxcE7AVVuN+sVvio5BRD7kzfX7OIHgJFg4J2Bc8DLXSiOiTqltcuAdXptzQiycdtgKctC0fpXoGETkg77cXoG9VfxltT0snHYYP3xVdAQi8lEuWcaLv+wWHcMrsXCO07RpLey5O0THICIftq3MiJX5h0TH8DosnGPILifqF84XHYOIVOD1tftgdfCSimOxcI5hXvEtnOUlomMQkQpUmmz4YjtXKDkWC+cIydKE+iULRMcgIhVZvLkEZjunSR/Fwjmi8cvFkIw1omMQkYoYLQ58uqVMdAyvwcIB4GqsR+N3S0THICIV+mRLGRqsDtExvAILB4Dpu88gW5pExyAiFTLZnPiEoxwALBxIliaYfvhcdAwiUrGl28q55A1YODAt+wqSicuKE5HnmGxOfL6Noxy/LhzZYedeN0SkiE+3lqPJz2es+XXhmFd/D6m2WnQMVamw2OHiniBEbdRbHPjSz6/L8dvCkV0uNHz5segYbpVd34SLf89H3+XbMPLnnXhzX/PSGo0OF27dug9DVu3A4FXbceOWvTjcwVkzh6x23Lm9CFk/78TYNbswt7ACVpcEANhY04hRP+/EzG37Wu6/sLgSOo3G/W+OSAU+3VoGpySJjiGM3xZO0/pVcB1Wz28bjQ4X/rllDybGR2DTuUPx/JBUvLS7AuurGvBsQTk0GmDVWZn47owM2CUZc7JPvaKCLMv45197YZNkfH9mBt4d1RffH6jFIzmlAICPS6pwT/+eyG2wYK/JioIGCwZFBHv6rRL5rGqzHWv3+O9RFb8tnMZv1XXdzR6TBdOTY3H/gGQkBBowOSkamREh2G40Y5vRjCtS4tAzOAD9woJwWXIM9pmtp3zOnfVNKGi0YO7Q3kgODsDIqFDc3jcJyw/XAQDqHE70CQ1EYqABtXYnvjtYi4t7RHv6rRL5tC+3l4uOIIxedAAR7Hvy4NibLzqGW42KDsOo6LCWv9tcEorNNvQJC8SQiBB8XFKJkVGhsLkk/Le0CucmRJ7yOWvsToTqtYgJ+N+3iV6jaTlkFqHXoc7hQp3DCatLQrRBjwCt3/4OQ9QhW8uMKKo2o09cqOgoivPLnw6mZV+JjuBxC/YfRqRBhwsTo/DwoGRkNzRhxM87cdqv2c2H1Ab0POVzDI4IhsUlYV1VPQDAKcn4vLwa5x0pq0t7xuCenfsRptdhR70Zf0+J9eh7IlKLL3f45yhHI8v+NaVIMptw4LopkK0W0VE8Jru+CdM3FeCDrH6YEB+Bmdv2IcKgx8MDk2F2SXgkpwQSgMVj+p/yuZaUVuE/hRUYGxOGIpMNRWYrlo/PQEZECIDmc0daDfBO0WG4ZBnfHajFE5m9MCkxysPvUqzpZ78gOgL5sNAAHZbddiZCAvzrIJPfjXDMa35SddnU2p2YuW0fbuuThAnxEWhwuLD8kBGPDUpBVIAeycEBeCyjF9ZWNaDcYjvl8/1fajz+OGco7u+fDKsk4fLk2JayAYBwgw7fHqjFhYlR+Ki4EvcO6NkyO46I2me2u7As1//+P/G7wjEtV+/hNItLwk1b92JIRAju6d8DACBBhgygyva/adDV9ub/dnVwbBui12Gf2Qqjw4k5g5JbfU6WZRQ32RAToEekQYfR0WGo9fOL24g64qsd6pkl21F+NZ6z5WyHs6RIdAyPkGUZt20rgtkpYcGoVDQduVYmWKtFZngwHswpwf/1ikej04V39x/CkIhg9A4JBNB8WCxQpznhCX+7JOGFwgrc068nEgINrT63urIe58VHIsKgQ4PThcJGC6IMOs++WSIV2FttxvZyI0amqPvw87H8qnBMy78WHcFjChotWHPk5P7IX3a13D4jORbvjOqDJ/PK8UReKZpcEsbGhOH5Ib1b7nPhhjzckp6If6YltPvcH+yvhEGrwb/a+XxhowWz+jWPpi5PjsW9O4vx7JBUd741ItX6Ynu5XxWO30wakJrMOHDNJMj2U5+3IDoVThogdwjUa7HyjvEI9ZPJA35zDsfy53qWDRF5FZtTwvq9/rPygN8UTtP6VaIjEBG18UthpegIivGLwpFMjbBu+0N0DCKiNjbtr4XZT2Z2+kXhNG36FXByT3Ei8j52l/8cVvOLwrGsXy06AhHRCf3sJ4fVVF84rnojrDs3i45BRHRCf+yvhcmm/sNqqi8cy8ZfAJdLdAwiohPyl8NqflA4a0VHICI6pV92q/+wmqoLR7ITpzgzAAAZuklEQVRZYcvZJjoGEdEp+cNhNVUXji1nOy/2JCKfYHdJ2FxSKzqGR6m6cKzbNomOQETUYVtK60RH8CiVFw4v9iQi37Gl1Cg6gkeptnCc1YfhLFXnVgREpE77a8yoMdtFx/AY1RaOdSsPpxGR79lSqt7zOOotHB5OIyIf9JeKz+OosnBkWYZt51+iYxARddpWFZ/HUWXhOEr2QWqsFx2DiKjTyo0WHGqwio7hEaosHHtBtugIRERdptbDaqosHFv+LtERiIi6bCsLx3fYC1g4ROS7tper8zyO6gpHMjXCWVEqOgYRUZcdrLeqcl011RWOfW8+IMuiYxARdZkMYF+VSXQMt1Nf4ezOEx2BiKjbdrNwvJ99T67oCERE3bankoXj9RzFe0VHICLqtr0c4Xg32eGA89AB0TGIiLptb7UZssrOR6uqcJwHSgHJJToGEVG3WRwulBstomO4laoKx1FeIjoCEZHbqO08jqoKx1leLDoCEZHbqG2mmqoKx1HBEQ4RqYfarsVRVeE4y4pFRyAicpuKenWtGq2qwuEIh4jUpNJkEx3BrVRTOK66GshmdQ0/ici/1VscsDnVM/NWPYVTUyU6AhGR21U2qmeUo57Cqa0WHYGIyO1YOF7IVcfCISL1OczC8T4sHCJSo0qTemaqqaZwpLoa0RGIiNyOh9S8EM/hEJEasXC8kIsjHCJSIRaOF3LVsnCISH1qm+yiI7iNagpHajSKjkBE5HZWpyQ6gtuopnBkm3pmchARHcWVBryM7HQCLvX8oxARHWVzcITjVTi6ISK1kqGeUQ4Lh4jIy1lVMsph4RAReTmbSiYOqKJwJBYOEamYlYfUvIdsV8+FUUREx1PLxAEWDhGRl+MIx5vIsugEREQeo5ZzOHrRAdxBozeIjkAqZ0zojd2DJiAvtj92ucKBBofoSORHtBrRCdxDJYWjirdBXqS2Rz8UDhyPvJh+2OUIRVnjkYKpAwCWDSkrUK8THcEt1PGTmiMc6qbqlEEoGHAm8qL6YJc9BAdMR0qlFmDBkGiBenWc/VBF4Wh0qngbpKDK3kNQ2G8cciPTscsWjENmByCBBUNeiYXjRTQGjnDo5A6lj0BBv9ORG94bu6yBqGpyAi6wYMgn8JCaN+EIh44hazQ42HcUCvqchpywVOyyBKDW4mzulVoAcApOSNQ5HOF4EU4a8G+yRoOK/qchP30MckN7YVeTHkarE7CDBUOqwMLxIhpDgOgIpCBJq0PZgNORnzYauSHJyDbr0GBzATY0f7BgSGVYOF5EExYOaHWApI6rcak1l86A0kFnoKD3KOQE9US2SQuT3QVY0fwB/ruTegXotNBo1HEhjjoKR6OBNjwCUn2d6CjkBk5DAEoGjUd+6ijkBCYhpxFockhAE4AmGSwY8idqGd0AKikcANBGRLFwfJQjIBjFmWchP2U4cgISkdNwZB93MwCzOpb0IOqqYIM6ZqgBKiocXUQUj9z7CEdgKPYNnoD85OHI0ccjr0GGzSUBJqD5YhgiOio6RD2XfaimcLSRUaIj0AnYg8Oxd/BE5PccihxdPPIbXLC7ZKAR4OExopOLDQ0UHcFt1FM4ESwcb2ENjW4umKTByNbFoqDeBackAw0AZ5ARdU5sqHpm4bJwqNuaImKxJ/Ns5CdmIlsTjd31TrhksGCI3ICF44V0kdGiI/gNc1Qi9mRORF78IGRrorGn3gFJBlAPsGCI3CsujIXjdXSxCaIjqFZjbE/szpiIvLiByJYjsa/eARk4UjBch4zIkxLCgkRHcBvVFI6+R4roCKrRENcLhZkTkRc7ALtc4ShuOFIwRoAFQ6SsHpEsHK/Dwuk6Y2IfFGachdzoftjlDEMpNxsj8hpJ4Zyl5nW0oWHNF382GEVH8Xq1PfujYOB45EX1xU5HKCpMLBgibxRk0CIqhOdwvJK+RwrsLJw2qnploHDAmciN7INd9mAcNDkAGSwYIi+XFK6ew2mAGgunMEd0DOEqew9Ffv9xyI1Ixy5rICq52RiRT+oVHSI6gluprHB6iY4gxME+I1HQ9+hulgGobnI2z07mXjBEPq1/fKjoCG6lssJJFh3B42SNBgf6jUZB+tgju1kaUMfdLIlUqV98mOgIbqWuwumZKjqC20laHSr6j2kumJAU7GrSod7q4m6WRH6gPwvHexnS+gFaLSD57orDLq0eZYPGoaB3FnKCk5Ft0qKRm40R+Z1AvZbncLyZNjgE+p6pcJYXi47SYS6dAaUZZyIvtXk3yxyTBma7C7AAsHCzMSJ/1Sc2FDqtOnb6PEpVhQMAAf0yvLpwHIYglGSOR37KCOQEJiG31W6WvjsyIyL36p+grsNpgCoLZyCa1i4XHaOFIyAY+wdPQH7yCGQHJCC3QYaNu1kS0SmobcIAoMLCMfTLEPr69uBQFGVORH7PYcjWxyO/1W6WPDxGRB2jtgkDgAoLJ6DvQECjAWRZkdezhURg3+CzkddjCLJ1cShocMHB3SyJqJs4wvEB2pAw6Hv2grOi1CPPbw2Nxp4hE5GfOBi7tLEobHDBxd0siciNEsIDERVsEB3D7VRXOMCRiQNuKpymiDjsGXw28hIyka2Jwh7uZklEHjYqRZ07GKuzcAYNRdO6lV16rDkqEbsHn43c+EHIlqOwr4G7WRKRskanqnMHY1UWTuCQUR2+b0NcCnYPmnBkN8sIFNVzszEiEiuLheM7DOn9oQ2PhNRY3+ZzxoTezQUT279lN8vmTwAsGCISrUdEEFKigkXH8AhVFo5Go0HgkJGwbFqLuqS+KBx0dDfLUJRxN0si8mJZqeo8fwOotHAAYM+F/8Lc2Eu4myUR+ZTRvdR5OA0AtKIDeEpSn7T/lQ0RkY9Q6/kbQMWFkx4bisTwQNExiIg6rFdUMJIi1LWt9LFUWzgAcFpajOgIREQdpubRDaD2wunNwiEi3zFaxRMGAJUXzti0GOg06tpPgojUyaDT4Iz0WNExPErVhRMVbMCoXur+jYGI1GFs7xiEB6lv/bRjqbpwAOCCQQmiIxARndJ5A9X/s0r1hXPOgATVbdNKROqi12owsV+c6Bgep/rCiQo2YIzKZ34QkW8b0zsaESo/nAb4QeEAPKxGRN7tfD84nAb4SeGc3T8eeh5WIyIvpNNqMLFfvOgYivCLwokIMvAiUCIfZKs9KDqCx41JjUakCnf3bI9qF+883vkDE/B7UY3oGEQ+oXrLChQvfbHN7QHRiRj20BIAQOO+nSj+6mUMfWBRp5//4JpPYK0qR/qVc1puO7RuKQ7+8l/0OP86JE2YAZfdgpqtq9Hzguu6/kZ8gL8cTgP8qHDO7h+P51cVwu6SREch8noxI85D1ODxrW4r+/5NaA3N6xM27NuBfYufhC4opNPPffi3r1Cx8iPEjrqg1e2H1n6OPv94HPs/+w+SJsxAzZZViM264ATPog46rQYT+/vH4TTATw6pAUBYoB7j0nlYjagjtHoD9MFhLR9OUx2M+ZvQc9L1sNYcQPHnc5E08YpOP2/1lpWo3fkr4sZe1OZzzqYGhPcdAWdTPWRJgt14GIExPdzxdrzWhL5xiPKTw2mAHxUOAFw2PFl0BCKfVLFyIRLOuBSGsGjog8OQ+e93Edp7cKefJ7zPcAy67TUYwtsu4aILCoWtuhy6oFAYc39HVOaZ7oju1WaM9K+fSX5VOGekx6h261YiT7HVHEB9wZ9IOONSAIA+JAL6kIguPVdgTBI0Ol27n4sbPQm5r9yMuNFTYCrJRVha5wvNl/SOCfG7awT9qnA0Gg0uH+Ffv1EQddfhDV8jZsQ5MIR5dl3CXhffjhGPf43oYRMR3KMP9nz4MHJfuRnWqnKPvq4o04cnQ+Nniwv7VeEAwLShPRCo97u3TdQlktOB2u2/tDnB7yn6kHAYc9ZDHxwGl9WMiH4jUf3XckVeW0lBBi0uHpIkOobi/O4nb0SQAZMzEkXHIPIJ9QV/QmMIRFj6UEVez1Z3GIbIeLgsZgTG9EBwUjqc5npFXltJkwYlqn5l6Pb4XeEAwBUjU0RHIPIJxrxNiOif1alDP06LCbLL1aXXq9myEnFZk6ALDoO9vgq2moPQhYR36bm8mb/+DPLLwhmYGI5hPSNFxyDyeg17tiC8z7BOPWbHE5egvnBzp19LcjmhMQRAFxSK8H4jIDkdqNm2GnFZF3b6ubzZ4B4RGJSovhLtCI0sy7LoECKsyDuEx37KEx2DiPzME1My8Lch6r6+6ET8coQDNG92FBMSIDoGEfmRyGCDX69e77eFY9BpcfmInqJjEJEf+b+sXgjUt38dkj/w28IBgKuzeiEs0G+WkyMigSKD9Lgyyz8nCxzl14UTHmTA1X7+DUBEyrh6dC+EBvj3L7h+XTgA8H+jUxHOUQ4ReVBEkB5XjuolOoZwfl84YYF6XD2a3whE5Dk8fN/M7wsHaP5miAjiNwMRuV9EkB5XZfGXWoCFA6B5lHPN6FTRMYhIhTi6+R8WzhFXZqX4zb7iRKQMjm5aY+EcERqgxzU8l0NEbnQVRzetsHCOceWoFL/a7pWIPCcmxICrObpphYVzjJAAPW45M110DCJSgTsm9OXo5jgsnONcPiIZAxPCRMcgIh82pEcELvbTBTpPhoVzHK1GgwfOHwj/2viViNxFA+D+8wb43fbRHcHCacew5EhM9cPtX4mo+6YN7YHBPSJEx/BKLJwTmDWhH5e8IaJOCQ/U444JfUXH8FosnBOICQ3AreM5gYCIOu6WM9MRzX22ToiFcxIzRqSgfzwnEBDRqfWNC8WMkcmiY3g1Fs5J6LQaPHD+ANExiMgHzD5vAPRa/kg9GX51TmFEShQuyuQEAiI6sQszEpGVGi06htdj4XTAv8/ph5gQrkBARG3FhwVg9nk8EtIRLJwOiA4JwMMXDhIdg4i80KOTM7jwbwexcDpoYr94XDKMVw4T0f9cPjwZZ6THio7hM1g4nXDvOf2REhUsOgYReYFeUcG4++x+omP4FBZOJ4QE6PHURZnQcckKIr+m02jw5EWZCA7QiY7iU1g4nTQsORLXn8bdQYn82XWnpWJYcqToGD6HhdMFN5+RjozEcNExiEiAAQlhuOUMrkLSFSycLtDrtHh6aiYC9fzyEfmTAJ0WT12UCb2O/+93Bb9qXZQWG4q7JvKEIZE/mTWxL/pxuasuY+F0w99HpeCCQQmiYxCRAiYNSsBV3DK6W1g43fT45AwM4A6hRKrWJy4Uj16YITqGz2PhdFOQQYd5lw5FFK80JlKl0AAdXrhkKKdAuwELxw16RAbj+WlDoNPy+hwiNdEAePKiTPSOCREdRRVYOG4yOjWaVx0TqczNZ6Tj7P7xomOoBgvHja7O6oW/DeFWBkRqcO6AeNx0RproGKrCwnGzhy4YhME9IkTHIKJu6B8fhienZELDZazcioXjZgF6LV64ZChiQ7mvOZEvig4xYN5l3ZsksHDhQmg0GqxZs6bltn/+8584++yz3ZDQd7FwPCAhPBAvXTYMwQbOaiHyJaEBOrw+YwR6RrpnVfi5c+e65XnUgoXjIYN7RODFS4fCoOOQnMgXBOi0eOmyYRjkpnUSdTodVq1ahZ07d7rl+dSAheNBp6XF4Jmpg7mdAZGX02k0ePbiwchKjXbbc0ZFReH888/HCy+80OZzS5YsQUZGBqKjozFjxgwcPHjQba/rzVg4HnbuwAQ8NGmg6BhEdBIPXzjQI9OfH3zwQSxduhQlJSUtty1fvhw33ngjnn76aWzduhWyLGPq1KlwuVxuf31vo5FlWRYdwh98vLkUr6/bKzoGER1n1oS+uO603m59zoULF+L+++9HdXU1xo4di3HjxqG+vh7FxcUICQlBamoq3nnnHQCA0WhEXFwcVq9ejXPOOcetObwNRzgKuXZsKq538zc1EXXPtWNS3V42x5szZw4++OAD1NbWAgBKSkrQr9//LhKPiopCXFwciouLPZrDG7BwFHTnhL6YPryn6BhEBOCSoT1wlwKrg1x22WVITk7GsmXLAABpaWnYs2dPy+eNRiOqqqqQnq7+Td1YOAqbc8FAbmlAJNi5A+Lx0KRBiryWVqvF7NmzW87RzJo1C4sXL8YXX3yB/fv348Ybb8SIESNw1llnKZJHJBaOwrQaDZ6+KBPnDeD6TEQiXJSZhGcvHqzoYrvXXXcdevZsProxefJkfPDBB3jssccwcuRIAMCPP/4InU791+1x0oAgLknG08vzsSzvkOgoRH5jxohkPHD+AC5ZIwgLRyBZlvGf1YX4eucB0VGIVO/603rjzgl9RcfwaywcL/DKmj1YsrVMdAwi1bpjQh/887Q00TH8HgvHS3ywaT/e2bBfdAwiVdEAmH3+AFwxMkV0FAILx6t8vbMCL6zeDRf/SYi6TafR4PEpg3DR4B6io9ARLBwvs2Z3JR77MQ92lyQ6CpHPMug0ePZvQ3AOZ4N6FRaOF9paWoc532Wj3uoUHYXI50SHGDD3kqEYmRIlOgodh4XjpcrrmnDft9koqjaLjkLkM/rHh+Hl6cOQFBEkOgq1g4XjxZrsTjyxLB9r91SJjkLk9c4bEI8npmR2a6dO8iwWjpeTZRkLNu7H+xuLwX8oorY0AG4+Ix03nZHGCzq9HAvHR/y6uwpPLstDk0P9e2YQdVSwQYcnL8rAuQO4PqEvYOH4kL1VJtz/zS5U1FtFRyESrkdEEF66bBj6J4SJjkIdxMLxMfUWBx76Pgd/ldaJjkIkzMiUKMy9ZAiiQwJER6FOYOH4IJck450NRVi8uQQS//XIj+g0Gtw4Lg03jEtTdLVncg8Wjg/bXm7EEz/l4WADD7GR+iVHBuHpqYMxLDlSdBTqIhaOjzPZnHjh50IszzssOgqRx0wdnITZ5w9AaIBedBTqBhaOSqwqOIy5qwvRwNUJSEXCA/V4cNJATBqUKDoKuQELR0UON1rx1LJ8TiggVRjVKwpPXZTJVQNUhIWjMrIsY8mWMrz1WxEXACWfpNdqcOv4dFw3tje0vJBTVVg4KrW3yoSnl+cj/3Cj6ChEHTasZyQevGAgr61RKRaOikmyjK93VODtDUU8t0NeLTLYgFkT+mLa0B5cnkbFWDh+oK7Jjvnr9uHHnINcj428igbAtKE9cOfEfogKNoiOQx7GwvEjO8uNmPvzbuypMomOQoT+8WGYc8FADOd1NX6DheNnXJKML7aX450NRTDbuRAoKS/EoMMtZ6bjyqwU6LVa0XFIQSwcP1VtsuG1tXuxIp8XjJIyNADOG5iAe87pj4TwQNFxSAAWjp/bVVGPtzcUYQuv3SEPGpceg9vG90FGUoToKCQQC4cAAFtK6/DOhiLsrKgXHYVUZGRKJG4/qy9GpESJjkJegIVDrfxeVIN3NxTx+h3qlozEcNx2Vh+MS48VHYW8CAuH2rV2TxXe3VCEvdVm0VHIh6THhmLm+HTuwEntYuHQCcmyjNUFlXhv436U1DaJjkNeLDU6BDeO643JmUlcjoZOiIVDp+SSZKzfW43PtpVhW5lRdBzyIqf1jsZVWb1wZp9YrhBAp8TCoU7ZU2nC59vKsCL/MGxOLg7qjwL1WkzJTMJVWSnoG8c1z6jjWDjUJUaLA9/srMCXOypQ2WgTHYcUkBAWiBkjk3HZ8GQuQ0NdwsKhbnFKEtbuqcbnW8uwg1OqVWlwjwhcnZWC8wYmcGUA6hYWDrlN4eFG/JBzEKsLKlHbZBcdh7ohOsSASYMS8bchPTAoMVx0HFIJFg65nUuSsbmkFivzD2Ptniqu2eYjDDoNxveJw9QhSTgzPRZ6HUcz5F4sHPIom9OF3/bVYGXeIWzcX8tdSL2MTqPB6NQoTMpIxDn94xEexHMz5DksHFJMo9WBNbursCL/MLaV1UHid54QOq0Gw5Mjcd6ABJw/MAExoQGiI5GfYOGQEA1WBzaX1OGP/TXYVFzLmW4elhQRiNPTYjEuPQZje8cgLFAvOhL5IRYOeYWiajP+KK7Bpv212F5u5DU+3RSg02JkSiTGpcdiXHos+sSFio5ExMIh72NzurC9zIhNxbXYXFyLohozD7+dgk6rQd+4UIxMicK49Bhk9YpGkEEnOhZRKywc8nommxN5hxqQc6ABOQcbkHuwHrVNDtGxhNEA6BUdjIykCAzuEYHMpAgMTAhjwZDXY+GQTzrUYEVhZSMKDzeisNKEwsONOKzS80AJYYHISApH5pGCyUgKRwRnk5EPYuGQajRaHSg3WlBRb0WF0dL830YLKuotONxgg8tLv9W1GiAxPAgpUcHoFR2MlKhgpESFHPkzGMEBHLmQOrBwyC84JQmH6q0tZVRpsqHR6kSD1YFGW/OfJpsTDVYnGq3Obl8vpNdqEBGkR0SQofkjWI/Io/8dpEdksAE9I4OQHBWM5MhgGHiRJfkBFg5RO6wOV0sB2V0Sjl14/+gq/BpocOyK/BoNEGzQISLIwGnHRO1g4RARkSI4jiciIkWwcIiISBEsHCIiUgQLh4iIFMHCISIiRbBwiIhIESwcIiJSBAuHiIgUwcIhIiJFsHCIiEgRLBwiIlIEC4eIiBTBwiEiIkWwcIiISBEsHCIiUgQLh4iIFMHCISIiRbBwiIhIESwcIiJSBAuHiIgUwcIhIiJFsHCIiEgRLBwiIlIEC4eIiBTBwiEiIkWwcIiISBEsHCIiUgQLh4iIFMHCISIiRbBwiIhIESwcIiJSBAuHiIgUwcIhIiJFsHCIiEgRLBwiIlIEC4eIiBTBwiEiIkWwcIiISBEsHCIiUgQLh4iIFMHCISIiRbBwiIhIESwcIiJSBAuHiIgUwcIhIiJFsHCIiEgRLBwiIlLE/wcteGw2wlMLwgAAAABJRU5ErkJggg==' alt='img' referrerPolicy='no-referrer' /> </p><h2><a name='header-n153' class='md-header-anchor '></a>项目总结</h2><p>我们从Stack的一些个人基本信息，如：国籍，性别，年龄，学历，收入，家庭，是否职业编程，求职状态，作息时间，使用电脑的时间，在户外的时间及锻炼频率，去描写了一个大体的用户画像。</p><p>由数据可以总结出：</p><ul><li><strong>Stack的用户来自世界范围，从而可以提现出satck是一个国际化平台；</strong></li><li><strong>Stack的用户几乎都是年轻男性，很大一部分未婚； satck的用户学历高，收入客观，有一份相关编码的工作；</strong></li><li><strong>satck的用户工作时间长，加班普遍，但也非常自律，坚持早起和运动。</strong></li></ul><h2><a name='header-n168' class='md-header-anchor '></a>项目问题解决方向</h2><p>&nbsp;</p><ul><li><p><strong>什么类型的广告适合投放在 Stack?</strong></p><p>从用户画像看出，针对男性的高品质，且不用花费太多时间去选择的产品，比较适合satck的用户，因为他们的收入不错，但时间主要花在工作上。例如可以投放最新的运动产品，数码产品等。</p></li><li><p><strong>Stack在什么类型的平台发布广告可以使自己的推广效果达到最大呢？</strong></p><p>可以有针对性地去程序员集中的地方投放推广广告，如程序员论坛，程序员博主等；</p><p>另一方面，大部分人把Stack当做一个提升自我技能及疑问解答的开源网站，那么可以和一些编程培训学校或网站合作，培养未来的中坚力量。</p></li></ul><h2><a name='header-n184' class='md-header-anchor '></a>反思与致谢</h2><ul><li>本数据集一共有128个特征，本次报告只分析了有针对性的15个特征，还有很多特征值得去深挖了解，如可以通过年龄切片成不同的数据集，去多个方面对比，以发现每个年龄层不同的特征及偏好；</li><li>本分析的结果都只是统计学上的相关性，并不具备因果关系，因果性有待日后更严谨的大样本随机双盲试验得出结果。</li></ul></div>
+</body>
+</html>
